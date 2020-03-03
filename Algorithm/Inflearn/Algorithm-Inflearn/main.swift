@@ -58,15 +58,59 @@ class Recursive {
             return sumArray(n: n - 1, data: data) + data[n - 1]
         }
     }
+    
+    // 6. 순차 탐색 - 변경 전
+    func search(data: [Int], n: Int, target: Int) -> Int {
+        for i in 0..<n {
+            if data[i] == target {
+                return i
+            }
+        }
+        return -1
+    }
+    
+    // 6. 순차 탐색 - 변경 후
+    func RecursionSearch(data: [Int], begin: Int, end: Int, target: Int) -> Int {
+        if begin > end {
+            return -1
+        } else if target == data[begin] {
+            return begin
+        } else {
+            return RecursionSearch(data: data, begin: begin + 1, end: end, target: target)
+        }
+    }
+    
+    // 7. 이진 검색
+    func binarySearch(data: [Int], begin: Int, end: Int, target: Int) -> Int {
+        if begin > end {
+            return -1
+        } else {
+            let middle = (begin + end) / 2
+            if data[middle] == target {
+                return middle
+            } else if data[middle] > target {
+                return binarySearch(data: data, begin: begin, end: middle - 1, target: target)
+            } else if data[middle] < target {
+                return binarySearch(data: data, begin: middle + 1, end: end, target: target)
+            }
+        }
+       return -1
+    }
 }
 
-let result = Recursive().sum(n: 5)
-print("합 예제 결과 : \(result)")
+//let result = Recursive().sum(n: 5)
+//print("합 예제 결과 : \(result)")
+//
+//let result2 = Recursive().factorial(n: 4)
+//print("팩토리얼 예제 결과 : \(result2)")
+//
+//Recursive().printBinary(n: 5)
+//
+//let result4 = Recursive().sumArray(n: 4, data: [0, 1, 2, 3])
+//print("\n배열의 합 구하기 예제 결과 : \(result4)")
 
-let result2 = Recursive().factorial(n: 4)
-print("팩토리얼 예제 결과 : \(result2)")
+let result = Recursive().RecursionSearch(data: [1, 2, 4, 6, 3], begin: 0, end: 5, target: 3)
+print(result)
 
-Recursive().printBinary(n: 5)
-
-let result4 = Recursive().sumArray(n: 4, data: [0, 1, 2, 3])
-print("\n배열의 합 구하기 예제 결과 : \(result4)")
+let binarySearch = Recursive().binarySearch(data: [0, 1, 2, 3, 4, 5], begin: 2, end: 4, target: 3)
+print(binarySearch)
