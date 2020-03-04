@@ -98,19 +98,42 @@ class Recursive {
     }
 }
 
-//let result = Recursive().sum(n: 5)
-//print("합 예제 결과 : \(result)")
-//
-//let result2 = Recursive().factorial(n: 4)
-//print("팩토리얼 예제 결과 : \(result2)")
-//
-//Recursive().printBinary(n: 5)
-//
-//let result4 = Recursive().sumArray(n: 4, data: [0, 1, 2, 3])
-//print("\n배열의 합 구하기 예제 결과 : \(result4)")
+class Sort {
+    // 1. 선택정렬
+    func selectionSort(data: [Int]) -> [Int] {
+        var result = data
+        var location = 0
+        var min: Int
+        for i in 0 ..< result.count {
+            min = result[i]
+            location = i
+            for j in i+1 ..< result.count {
+                if min > result[j] {
+                    min = result[j]
+                    location = j
+                }
+            }
+            
+            result.swapAt(i, location)
+        }
+        return result
+    }
+    
+    // 2. 버블정렬
+    func bubbleSort(data: [Int]) -> [Int] {
+        var result = data
+        
+        for _ in 0..<result.count {
+            for j in 0..<result.count-1 {
+                if result[j] > result[j+1] {
+                    result.swapAt(j, j+1)
+                }
+            }
+        }
+        
+        return result
+    }
+}
 
-let result = Recursive().RecursionSearch(data: [1, 2, 4, 6, 3], begin: 0, end: 5, target: 3)
-print(result)
-
-let binarySearch = Recursive().binarySearch(data: [0, 1, 2, 3, 4, 5], begin: 2, end: 4, target: 3)
-print(binarySearch)
+print(Sort().selectionSort(data: [29, 10, 14, 37, 13]))
+print(Sort().bubbleSort(data: [29, 10, 14, 37, 13]))
