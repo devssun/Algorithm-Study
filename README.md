@@ -20,3 +20,6 @@
  - [순환(Recursive) 개념과 기본 예제 1 정리](https://hyesunzzang.tistory.com/175)
  - [순환(Recursive) 개념과 기본 예제 2 정리](https://hyesunzzang.tistory.com/176)
  - [순환(Recursive) 개념과 기본 예제 3 정리](https://hyesunzzang.tistory.com/177)
+
+#### 2. 정렬(Sort)
+ - [3강 기본적인 정렬 알고리즘 정리](https://hyesunzzang.tistory.com/178)
