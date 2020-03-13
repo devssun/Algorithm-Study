@@ -133,7 +133,51 @@ class Sort {
         
         return result
     }
+    
+    /// 3. merge sort
+    func split(data: [Int]) -> [Int] {
+        // 데이터 길이가 1이면 바로 리턴
+        if data.count == 1 {
+            return data
+        }
+        
+        // 배열을 가장 작은 단위로 쪼개기
+        let medium = data.count / 2
+        let left: [Int] = split(data: Array(data[0..<medium]))
+        let right: [Int] = split(data: Array(data[medium..<data.count]))
+        return merge(left: left, right: right)
+    }
+    
+    func merge(left: [Int], right: [Int]) -> [Int] {
+        var result = [Int]()
+        var leftPoint = 0
+        var rightPoint = 0
+        
+        // 왼쪽, 오른쪽 배열의 값을 비교하여 작은 값부터 배열에 추가
+        while leftPoint < left.count && rightPoint < right.count {
+            if left[leftPoint] <= right[rightPoint] {
+                result.append(left[leftPoint])
+                leftPoint += 1  // 추가 후 인덱스 증가
+            } else {
+                result.append(right[rightPoint])
+                rightPoint += 1 // 추가 후 인덱스 증가
+            }
+        }
+        
+        // 왼쪽 배열의 남은 값을 배열에 모두 추가
+        while leftPoint < left.count {
+            result.append(left[leftPoint])
+            leftPoint += 1
+        }
+        
+        // 오른쪽 배열에 남은 값을 배열에 모두 추가
+        while rightPoint < right.count {
+            result.append(right[rightPoint])
+            rightPoint += 1
+        }
+        
+        return result
+    }
 }
 
-print(Sort().selectionSort(data: [29, 10, 14, 37, 13]))
-print(Sort().bubbleSort(data: [29, 10, 14, 37, 13]))
+print(Sort().split(data: [6, 4, 1, 2, 3, 5, 7, 8]))
