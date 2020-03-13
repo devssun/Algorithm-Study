@@ -181,3 +181,4 @@ class Sort {
 }
 
 print(Sort().split(data: [6, 4, 1, 2, 3, 5, 7, 8]))
+print(Sort().split(data: [4, 3, 6, 1, 2, 8, 7, 5]))

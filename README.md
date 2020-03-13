@@ -23,3 +23,4 @@
 
 #### 2. 정렬(Sort)
  - [3강 기본적인 정렬 알고리즘 정리](https://hyesunzzang.tistory.com/178)
+ - [4강 병합정렬(merge sort)](https://hyesunzzang.tistory.com/180)
