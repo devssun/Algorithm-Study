@@ -178,7 +178,36 @@ class Sort {
         
         return result
     }
+    
+    /// 4. Quick Sort
+    func quickSort(data: inout [Int], p: Int, r: Int) {
+        if p < r {
+            let q = partition(data: &data, p: p, r: r)
+            quickSort(data: &data, p: p, r: q - 1)
+            quickSort(data: &data, p: q + 1, r: r)
+        }
+    }
+    
+    func partition(data: inout [Int], p: Int, r: Int) -> Int {
+        let pivot = data[r]
+        var i = p - 1
+        var j = p
+        
+        while j <= r - 1 {
+            if data[j] >= pivot {
+                j += 1
+            } else {
+                i += 1
+                data.swapAt(i, j)
+                j += 1
+            }
+        }
+        
+        data.swapAt(i + 1, r)
+        return i + 1
+    }
 }
 
-print(Sort().split(data: [6, 4, 1, 2, 3, 5, 7, 8]))
-print(Sort().split(data: [4, 3, 6, 1, 2, 8, 7, 5]))
+var data = [31, 8, 48, 73, 11, 3, 20, 29, 65, 15]
+Sort().quickSort(data: &data, p: 0, r: 9)
+print(data)
